@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superfast Couriers - Punjabi Ladies Outfits</title>
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #1a3a8f;
+            --secondary-color: #a61c1c;
+            --accent-color: #f0e6d2;
+            --text-color: #333;
+            --light-bg: #f9f9f9;
+            --border-color: #ddd;
+            --main-bg-primary: #2c3e50; /* Dark blue-grey for velvet feeling */
+            --main-bg-secondary: #ecf0f1; /* Light grey for contrast */
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 15px 0;
+        }
+        
+        .main-nav {
+            display: flex;
+        }
+        
+        .main-nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 20px 15px;
+            display: block;
+            transition: background-color 0.3s;
+        }
+        
+        .main-nav a:hover, .main-nav a.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .login-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        /* Hero Section - Updated with velvet-like styling */
+        .hero {
+            background: linear-gradient(135deg, var(--main-bg-primary) 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        
+        /* Add velvet texture effect */
+        .hero:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0 0L50 50L100 0M0 100L50 50L100 100" stroke="rgba(255,255,255,0.05)" stroke-width="1" fill="none"/></svg>');
+            opacity: 0.1;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .hero-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .primary-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            box-shadow: 0 4px 10px rgba(166, 28, 28, 0.3);
+        }
+        
+        .secondary-btn {
+            background-color: white;
+            color: var(--main-bg-primary);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 20px;
+            background-color: var(--light-bg);
+        }
+        
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-header h2 {
+            font-size: 36px;
+            color: var(--main-bg-primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .service-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-image img {
+            transform: scale(1.05);
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            font-size: 22px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: var(--main-bg-primary);
+        }
+        
+        .service-content p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .service-link {
+            display: inline-block;
+            color: var(--primary-color);
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .service-link:hover {
+            color: var(--secondary-color);
+        }
+        
+        /* Featured Products Section */
+        .featured-products {
+            padding: 80px 20px;
+            background-color: white;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            border: none;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: white;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .product-image {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .product-image:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(transparent 70%, rgba(44, 62, 80, 0.3));
+            z-index: 1;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 2;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .product-details {
+            padding: 20px;
+        }
+        
+        .product-title {
+            font-size: 16px;
+            margin: 0 0 10px;
+            height: 40px;
+            overflow: hidden;
+            color: var(--main-bg-primary);
+        }
+        
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .current-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+        
+        .original-price {
+            font-size: 14px;
+            text-decoration: line-through;
+            color: #888;
+        }
+        
+        .view-product {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--main-bg-primary) 100%);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .view-product:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+        
+        .view-all-btn {
+            display: block;
+            width: 200px;
+            margin: 40px auto 0;
+            background-color: var(--main-bg-primary);
+            color: white;
+            text-align: center;
+            padding: 12px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .view-all-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+        
+        /* Blog Preview Section */
+        .blog-preview {
+            padding: 80px 20px;
+            background-color: var(--main-bg-secondary);
+        }
+        
+        .blog-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .post-card {
+            border: none;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: white;
+        }
+        
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .post-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .post-image:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(transparent 70%, rgba(44, 62, 80, 0.3));
+            z-index: 1;
+        }
+        
+        .post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .post-card:hover .post-image img {
+            transform: scale(1.05);
+        }
+        
+        .post-content {
+            padding: 25px;
+        }
+        
+        .post-title {
+            font-size: 20px;
+            margin: 0 0 10px;
+            color: var(--main-bg-primary);
+        }
+        
+        .post-excerpt {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .post-meta {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 15px;
+        }
+        
+        .read-more {
+            display: inline-block;
+            color: var(--primary-color);
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .read-more:hover {
+            color: var(--secondary-color);
+        }
+        
+        /* Shipping Info Section */
+        .shipping-info {
+            background: linear-gradient(135deg, var(--main-bg-primary) 0%, var(--primary-color) 100%);
+            padding: 80px 20px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Add velvet texture effect */
+        .shipping-info:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0 0L50 50L100 0M0 100L50 50L100 100" stroke="rgba(255,255,255,0.05)" stroke-width="1" fill="none"/></svg>');
+            opacity: 0.1;
+        }
+        
+        .shipping-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .shipping-feature {
+            text-align: center;
+            background-color: rgba(255,255,255,0.1);
+            padding: 30px 20px;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .shipping-feature:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255,255,255,0.15);
+        }
+        
+        .shipping-feature h3 {
+            margin-top: 20px;
+            font-size: 22px;
+            color: white;
+        }
+        
+        .shipping-feature p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 0;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: var(--light-bg);
+        }
+        
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-section h2 {
+            font-size: 36px;
+            color: var(--main-bg-primary);
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--main-bg-primary);
+            color: white;
+            padding: 50px 20px 20px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .footer-widget h3 {
+            margin-top: 0;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-widget ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-widget ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-widget a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-widget a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                padding: 10px;
+            }
+            
+            .main-nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .main-nav a {
+                padding: 10px;
+            }
+            
+            .section-header h2 {
+                font-size: 28px;
+            }
+            
+            .blog-posts {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="/" class="logo">Superfast Couriers</a>
+            <nav class="main-nav">
+                <a href="/" class="active">Home</a>
+                <a href="/blog">Blog</a>
+                <a href="/shop">Shop & Gift</a>
+                <a href="/services">Services</a>
+                <a href="/rates">Rates</a>
+                <a href="/track">Track Package</a>
+                <a href="/documents">Documents</a>
+                <a href="/contact">Contact</a>
+            </nav>
+            <button class="login-btn">Login</button>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Authentic Punjabi Ladies Outfits</h1>
+        <p>Explore our collection of traditional Punjabi attire and have it delivered worldwide through our reliable courier service</p>
+        <div class="hero-buttons">
+            <a href="/shop" class="hero-btn primary-btn">Shop & Gift</a>
+            <a href="/blog" class="hero-btn secondary-btn">Explore Blog</a>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section class="services">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Our Services</h2>
+                <p>We offer a complete solution for Punjabi fashion enthusiasts worldwide</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://placehold.co/600x400/e8d9c0/a61c1c?text=Shop+%26+Gift" alt="Shop & Gift">
+                    </div>
+                    <div class="service-content">
+                        <h3>Shop & Gift</h3>
+                        <p>Browse our collection of authentic Punjabi ladies outfits including Lehenga Choli sets, Gharara sets, and Punjabi suits. Perfect for yourself or as gifts for loved ones.</p>
+                        <a href="/shop" class="service-link">Explore Shop &rarr;</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://placehold.co/600x400/e8d9c0/a61c1c?text=Worldwide+Shipping" alt="Worldwide Shipping">
+                    </div>
+                    <div class="service-content">
+                        <h3>Worldwide Shipping</h3>
+                        <p>We deliver your precious Punjabi outfits to any corner of the world with our reliable courier service, complete with tracking and customs assistance.</p>
+                        <a href="/services" class="service-link">Learn More &rarr;</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://placehold.co/600x400/e8d9c0/a61c1c?text=Cultural+Blog" alt="Cultural Blog">
+                    </div>
+                    <div class="service-content">
+                        <h3>Cultural Blog</h3>
+                        <p>Discover the rich heritage of Punjabi culture, marriage ceremonies, and the significance of traditional attire through our informative blog posts.</p>
+                        <a href="/blog" class="service-link">Read Blog &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Products Section -->
+    <section class="featured-products">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Featured Products</h2>
+                <p>Explore our collection of authentic Punjabi ladies outfits</p>
+            </div>
+            
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://placehold.co/600x800/e8d9c0/a61c1c?text=Bridal+Lehenga" alt="Bridal Lehenga Choli">
+                        <span class="product-badge">New</span>
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-title">Bridal Lehenga Choli with Heavy Embroidery</h3>
+                        <div class="product-price">
+                            <span class="current-price">₹15,999</span>
+                            <span class="original-price">₹18,999</span>
+                        </div>
+                        <a href="/shop#lehenga-choli" class="view-product">View Product</a>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://placehold.co/600x800/e8d9c0/a61c1c?text=Wedding+Gharara" alt="Wedding Gharara Set">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-title">Wedding Gharara Set with Heavy Embroidery</h3>
+                        <div class="product-price">
+                            <span class="current-price">₹11,999</span>
+                            <span class="original-price">₹13,499</span>
+                        </div>
+                        <a href="/shop#gharara-sets" class="view-product">View Product</a>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://placehold.co/600x800/e8d9c0/a61c1c?text=Punjabi+Suit" alt="Traditional Punjabi Suit">
+                        <span class="product-badge">Bestseller</span>
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-title">Traditional Punjabi Suit with Phulkari Embroidery</h3>
+                        <div class="product-price">
+                            <span class="current-price">₹3,499</span>
+                            <span class="original-price">₹4,999</span>
+                        </div>
+                        <a href="/shop#punjabi-suits" class="view-product">View Product</a>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="/shop" class="view-all-btn">View All Products</a>
+        </div>
+    </section>
+    
+    <!-- Blog Preview Section -->
+    <section class="blog-preview">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>From Our Blog</h2>
+                <p>Learn about Punjabi culture, traditions, and fashion</p>
+            </div>
+            
+            <div class="blog-posts">
+                <!-- Blog Post 1 -->
+                <div class="post-card">
+                    <div class="post-image">
+                        <img src="https://placehold.co/600x400/e8d9c0/a61c1c?text=Punjabi+Culture" alt="Punjabi Culture">
+                    </div>
+                    <div class="post-content">
+                        <h3 class="post-title">The Rich Tapestry of Punjabi Culture: Marriage Ceremonies and Traditional Attire</h3>
+                        <div class="post-meta">April 22, 2025 | Cultural</div>
+                        <p class="post-excerpt">Explore the vibrant traditions of Punjabi weddings and the significance of traditional clothing in Punjabi culture.</p>
+                        <a href="/punjabi_culture_blog.html" class="read-more">Read More &rarr;</a>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 2 -->
+                <div class="post-card">
+                    <div class="post-image">
+                        <img src="https://placehold.co/600x400/e8d9c0/a61c1c?text=Phulkari+Embroidery" alt="Phulkari Embroidery">
+                    </div>
+                    <div class="post-content">
+                        <h3 class="post-title">The Art of Phulkari Embroidery in Punjabi Attire</h3>
+                        <div class="post-meta">April 15, 2025 | Traditional</div>
+                        <p class="post-excerpt">Discover the intricate craft of Phulkari embroidery and its significance in Punjabi culture and fashion.</p>
+                        <a href="/blog_post_with_shop_links.html" class="read-more">Read More &rarr;</a>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 3 -->
+                <div class="post-card">
+                    <div class="post-image">
+                        <img src="https://placehold.co/600x400/e8d9c0/a61c1c?text=Lehenga+Choli+Sets" alt="Lehenga Choli Sets">
+                    </div>
+                    <div class="post-content">
+                        <h3 class="post-title">Stunning Lehenga Choli Sets for Wedding Season</h3>
+                        <div class="post-meta">April 10, 2025 | Wedding</div>
+                        <p class="post-excerpt">Explore our collection of exquisite Lehenga Choli sets perfect for weddings and special occasions.</p>
+                        <a href="/blog" class="read-more">Read More &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Shipping Info Section -->
+    <section class="shipping-info">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>International Shipping with Superfast Couriers</h2>
+                <p>We deliver authentic Punjabi attire worldwide with our reliable courier service</p>
+            </div>
+            
+            <div class="shipping-features">
+                <div class="shipping-feature">
+                    <h3>Worldwide Delivery</h3>
+                    <p>We ship to USA, Canada, Europe, and more with our reliable courier service</p>
+                </div>
+                
+                <div class="shipping-feature">
+                    <h3>Secure Packaging</h3>
+                    <p>Your precious outfits are carefully packaged to ensure they arrive in perfect condition</p>
+                </div>
+                
+                <div class="shipping-feature">
+                    <h3>Real-time Tracking</h3>
+                    <p>Track your package at every step of its journey with our advanced tracking system</p>
+                </div>
+                
+                <div class="shipping-feature">
+                    <h3>Customs Assistance</h3>
+                    <p>We handle all customs documentation to ensure smooth international delivery</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2>Ready to Explore Punjabi Fashion?</h2>
+            <p>Browse our collection of authentic Punjabi ladies outfits or learn more about Punjabi culture through our blog</p>
+            <div class="cta-buttons">
+                <a href="/shop" class="hero-btn primary-btn">Shop Now</a>
+                <a href="/blog" class="hero-btn secondary-btn">Read Blog</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-widget">
+                <div class="footer-logo">SUPERFAST COURIERS</div>
+                <p>Your trusted bridge between Punjab and the world</p>
+            </div>
+            
+            <div class="footer-widget">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/shop">Shop & Gift</a></li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="/rates">Rates</a></li>
+                    <li><a href="/track">Track Package</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-widget">
+                <h3>Shop Categories</h3>
+                <ul>
+                    <li><a href="/shop#punjabi-suits">Punjabi Suits</a></li>
+                    <li><a href="/shop#lehenga-choli">Lehenga Choli Sets</a></li>
+                    <li><a href="/shop#gharara-sets">Gharara Sets</a></li>
+                    <li><a href="/shop#accessories">Accessories</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-widget">
+                <h3>Contact Us</h3>
+                <p>Shop No. 2, City Complex<br>The Mall, Kapurthala<br>Punjab, India</p>
+                <p>Phone: +91 7009624562<br>Email: info@chopracourier.com</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Superfast Couriers. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
