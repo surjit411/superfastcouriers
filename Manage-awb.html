@@ -1,6 +1,5 @@
+
 <!DOCTYPE html>
-<html lang="en">
-<<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,199 +10,130 @@
             font-family: Arial, sans-serif;
             background: #f5f5f5;
             margin: 0;
-            padding: 0;
-        }
-        header {
-            background: #0073e6;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-        }
-        main {
-            padding: 30px;
-        }
-        .card {
-            background: white;
-            border-radius: 10px;
             padding: 20px;
-            margin: 20px 0;
+            text-align: center;
+        }
+        h1 {
+            color: #0073e6;
+        }
+        .form-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 20px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        button {
-            padding: 10px 20px;
-            background: #0073e6;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            margin-top: 10px;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #005bb5;
         }
         input[type="text"] {
             padding: 10px;
-            width: 100%;
-            margin-bottom: 10px;
+            width: 250px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #0073e6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #005bb5;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        li {
+            background: white;
+            margin: 10px auto;
+            padding: 10px;
+            width: 300px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .delete-btn {
+            background-color: red;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .delete-btn:hover {
+            background-color: darkred;
         }
     </style>
 </head>
 <body>
 
-<header>
     <h1>Manage AWB Numbers</h1>
-</header>
 
-<main>
-    <div class="card">
-        <h2>Add New AWB Number</h2>
-        <input type="text" id="awbInput" placeholder="Enter New AWB Number">
-        <button onclick="addAWB()">Add AWB</button>
+    <div class="form-container">
+        <input type="text" id="awbInput" placeholder="Enter AWB Number">
+        <br>
+        <button onclick="addAWB()">Save AWB</button>
+        <button onclick="printAWBs()">Print AWBs</button>
     </div>
 
-    <div class="card">
-        <h2>Existing AWB Numbers</h2>
-        <ul id="awbList">
-            <!-- List of AWBs will appear here -->
-        </ul>
-    </div>
-</main>
+    <ul id="awbList"></ul>
 
-<script>
-    function addAWB() {
-        const input = document.getElementById('awbInput');
-        const value = input.value.trim();
-        if (value) {
+    <script>
+        function loadAWBs() {
+            const awbs = JSON.parse(localStorage.getItem('awbs')) || [];
             const list = document.getElementById('awbList');
-            const item = document.createElement('li');
-            item.textContent = value;
-            list.appendChild(item);
-            input.value = '';
-        } else {
-            alert('Please enter a valid AWB number.');
+            list.innerHTML = '';
+            awbs.forEach((awb, index) => {
+                const li = document.createElement('li');
+                li.innerHTML = `${awb} <button class="delete-btn" onclick="deleteAWB(${index})">Delete</button>`;
+                list.appendChild(li);
+            });
         }
-    }
-</script>
 
-</body>
-</html>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Manage AWB - Superfast Couriers</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-      color: #0073e6;
-    }
-    form {
-      background: white;
-      padding: 20px;
-      margin-bottom: 30px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    input, select, button {
-      display: block;
-      width: 100%;
-      margin-top: 10px;
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    button {
-      background-color: #0073e6;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #005bb5;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: white;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    th, td {
-      padding: 12px;
-      border-bottom: 1px solid #ccc;
-      text-align: left;
-    }
-    th {
-      background-color: #0073e6;
-      color: white;
-    }
-  </style>
-</head>
-<body>
+        function addAWB() {
+            const awbInput = document.getElementById('awbInput');
+            const awb = awbInput.value.trim();
+            if (awb) {
+                const awbs = JSON.parse(localStorage.getItem('awbs')) || [];
+                awbs.push(awb);
+                localStorage.setItem('awbs', JSON.stringify(awbs));
+                awbInput.value = '';
+                loadAWBs();
+            } else {
+                alert('Please enter a valid AWB number.');
+            }
+        }
 
-<h1>Manage AWB Numbers</h1>
+        function deleteAWB(index) {
+            const awbs = JSON.parse(localStorage.getItem('awbs')) || [];
+            awbs.splice(index, 1);
+            localStorage.setItem('awbs', JSON.stringify(awbs));
+            loadAWBs();
+        }
 
-<form id="awbForm">
-  <input type="text" id="awbNumber" placeholder="Enter AWB Number" required>
-  <select id="awbStatus">
-    <option value="Pending">Pending</option>
-    <option value="In Transit">In Transit</option>
-    <option value="Delivered">Delivered</option>
-    <option value="Cancelled">Cancelled</option>
-  </select>
-  <button type="submit">Add AWB</button>
-</form>
+        function printAWBs() {
+            const awbs = JSON.parse(localStorage.getItem('awbs')) || [];
+            let printWindow = window.open('', '', 'height=600,width=800');
+            printWindow.document.write('<html><head><title>AWB Numbers</title></head><body>');
+            printWindow.document.write('<h1>Superfast Couriers - AWB Numbers</h1><ul>');
+            awbs.forEach(awb => {
+                printWindow.document.write(`<li>${awb}</li>`);
+            });
+            printWindow.document.write('</ul><br><p>Jurisdiction: Kapurthala (Punjab)</p>');
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            printWindow.print();
+        }
 
-<table id="awbTable">
-  <thead>
-    <tr>
-      <th>AWB Number</th>
-      <th>Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- Data will appear here -->
-  </tbody>
-</table>
-
-<script>
-const awbForm = document.getElementById('awbForm');
-const awbTableBody = document.querySelector('#awbTable tbody');
-
-// Load saved AWBs from local storage (temporary browser memory)
-document.addEventListener('DOMContentLoaded', () => {
-  const awbs = JSON.parse(localStorage.getItem('awbs')) || [];
-  awbs.forEach(awb => addRow(awb.number, awb.status));
-});
-
-awbForm.addEventListener('submit', function(e) {
-  e.preventDefault();
-  const number = document.getElementById('awbNumber').value.trim();
-  const status = document.getElementById('awbStatus').value;
-  if(number) {
-    addRow(number, status);
-    saveAWB(number, status);
-    awbForm.reset();
-  }
-});
-
-function addRow(number, status) {
-  const row = document.createElement('tr');
-  row.innerHTML = `<td>${number}</td><td>${status}</td>`;
-  awbTableBody.appendChild(row);
-}
-
-function saveAWB(number, status) {
-  const awbs = JSON.parse(localStorage.getItem('awbs')) || [];
-  awbs.push({ number, status });
-  localStorage.setItem('awbs', JSON.stringify(awbs));
-}
-</script>
+        window.onload = loadAWBs;
+    </script>
 
 </body>
 </html>
