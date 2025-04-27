@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Track Shipment - Superfast Couriers</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background-color: #0073e6;
+      color: white;
+      padding: 20px;
+      font-size: 24px;
+    }
+    main {
+      margin-top: 50px;
+    }
+    input[type="text"] {
+      width: 80%;
+      max-width: 400px;
+      padding: 12px;
+      margin: 20px 0;
+      font-size: 18px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .button-group {
+      margin-top: 20px;
+    }
+    .button-group button {
+      background-color: #0073e6;
+      color: white;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 5px;
+      margin: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .button-group button:hover {
+      background-color: #005bb5;
+    }
+    footer {
+      margin-top: 50px;
+      color: #777;
+      font-size: 14px;
+      padding-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  Track Your Shipment
+</header>
+
+<main>
+  <input type="text" id="awbNumber" placeholder="Enter your AWB Number">
+
+  <div class="button-group">
+    <button onclick="trackDHL()">Track DHL</button>
+    <button onclick="trackFedEx()">Track FedEx</button>
+    <button onclick="trackUPS()">Track UPS</button>
+  </div>
+</main>
+
+<footer>
+  © 2025 Superfast Couriers. All Rights Reserved.
+</footer>
+
+<script>
+function trackDHL() {
+  var awb = document.getElementById('awbNumber').value.trim();
+  if (awb) {
+    window.open(`https://www.dhl.com/in-en/home/tracking.html?tracking-id=${awb}`, '_blank');
+  } else {
+    alert('Please enter a valid AWB number!');
+  }
+}
+
+function trackFedEx() {
+  var awb = document.getElementById('awbNumber').value.trim();
+  if (awb) {
+    window.open(`https://www.fedex.com/fedextrack/?trknbr=${awb}`, '_blank');
+  } else {
+    alert('Please enter a valid AWB number!');
+  }
+}
+
+function trackUPS() {
+  var awb = document.getElementById('awbNumber').value.trim();
+  if (awb) {
+    window.open(`https://www.ups.com/track?tracknum=${awb}`, '_blank');
+  } else {
+    alert('Please enter a valid AWB number!');
+  }
+}
+</script>
+
+</body>
+</html>
