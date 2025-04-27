@@ -2,161 +2,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Superfast Couriers</title>
   <style>
-    /* Basic reset and default styling */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #333;
       line-height: 1.6;
-      color: #333;
-      background-color: #fff;
     }
-    /* Header styling */
     header {
-      background: #333;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2em;
-    }
-    header p.tagline {
-      margin: 5px 0 0;
-      font-size: 1.2em;
-      color: #ccc;
-    }
-    /* Hero section styling */
-    .hero {
-      background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('hero.jpg') center/cover no-repeat;
-      /* If 'hero.jpg' is present in the same folder, it will be used as background. Otherwise, the solid color below is shown. */
-      background-color: #f5f5f5;
-      text-align: center;
-      padding: 60px 20px;
-    }
-    .hero h2 {
-      font-size: 2em;
-      color: #800000; /* dark maroon color for emphasis */
-      margin: 0 0 10px;
-    }
-    .hero p.subtitle {
-      font-size: 1.25em;
-      color: #555;
-      margin: 0 0 20px;
-    }
-    .hero p.description {
-      font-size: 1em;
-      color: #333;
-      margin: 0;
-    }
-    /* Categories section styling */
-    .categories {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      background-color: #0073e6;
+      color: white;
       padding: 20px 10px;
-      background: #fff;
-    }
-    .category {
-      flex: 1 1 250px;
-      max-width: 300px;
-      margin: 15px;
       text-align: center;
     }
-    .category img {
-      width: 100%;
-      max-width: 250px;
-      height: auto;
-      display: block;
-      margin: 0 auto 10px;
-      border-radius: 4px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
-    }
-    .category h3 {
-      font-size: 1.1em;
-      color: #333;
-      margin: 5px 0;
-    }
-    .category p {
-      margin: 0;
-      font-size: 0.95em;
-      color: #666;
-    }
-    /* Info (contact details) section styling */
-    .info {
-      padding: 20px;
+    nav {
+      background: #f1f1f1;
+      padding: 10px;
       text-align: center;
-      background: #fafafa;
     }
-    .info p {
-      margin: 8px 0;
-      font-size: 1em;
-      color: #333;
-    }
-    .info a {
+    nav a {
+      margin: 0 15px;
       color: #0073e6;
       text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
     }
-    .info a:hover {
-      text-decoration: underline;
-    }
-    /* Footer styling */
-    footer {
-      background: #000;
-      color: #fff;
+    .hero {
+      padding: 40px 20px;
       text-align: center;
-      padding: 15px 10px;
-      font-size: 0.9em;
+    }
+    .hero h1 {
+      font-size: 36px;
+      color: #800000;
+    }
+    .hero p {
+      font-size: 20px;
+      color: #555;
+    }
+    .tracking-links {
+      padding: 30px 10px;
+      text-align: center;
+      background-color: #f9f9f9;
+    }
+    .tracking-links a {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 20px;
+      background-color: #0073e6;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 18px;
+    }
+    .map {
+      padding: 40px 10px;
+      text-align: center;
+    }
+    .map img {
+      width: 90%;
+      max-width: 600px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .about {
+      padding: 30px 20px;
+      text-align: center;
+    }
+    .about p {
+      font-size: 18px;
+      max-width: 800px;
+      margin: auto;
+      color: #555;
+    }
+    .upi-payment {
+      background-color: #e6f2ff;
+      padding: 30px 20px;
+      text-align: center;
+    }
+    .upi-payment h2 {
+      color: #0073e6;
+    }
+    .upi-payment p {
+      font-size: 18px;
+      color: #555;
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 14px;
+    }
+    footer a {
+      color: #80c7ff;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Superfast Couriers</h1>
-    <!-- Company tagline or short description -->
-    <p class="tagline">Fast, Reliable &amp; Affordable Deliveries</p>
-  </header>
 
-  <section class="hero">
-    <h2>Premium Punjabi Suits &amp; Cultural Gifts</h2>
-    <p class="subtitle">Bringing the heritage of Punjab to your doorstep — Worldwide Shipping Available!</p>
-    <p class="description">Surprise your loved ones with a piece of Punjab, delivered with care through Superfast Couriers.</p>
-  </section>
+<header>
+  <h1>Superfast Couriers</h1>
+  <p>Fast, Reliable & Affordable Deliveries</p>
+</header>
 
-  <section class="categories">
-    <!-- Category 1 -->
-    <div class="category">
-      <img src="https://via.placeholder.com/250?text=Image" alt="Premium Punjabi Suits" />
-      <h3>Premium Punjabi Suits</h3>
-      <p>Designer Punjabi Suits</p>
-    </div>
-    <!-- Category 2 -->
-    <div class="category">
-      <img src="https://via.placeholder.com/250?text=Image" alt="Punjabi Juttis and Phulkaris" />
-      <h3>Punjabi Juttis &amp; Phulkaris</h3>
-      <p>Traditional Juttis &amp; Phulkaris</p>
-    </div>
-    <!-- Category 3 -->
-    <div class="category">
-      <img src="https://via.placeholder.com/250?text=Image" alt="Punjabi Handicrafts" />
-      <h3>Punjabi Handicrafts</h3>
-      <p>Handcrafted Punjabi Gifts</p>
-    </div>
-  </section>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="track.html">Track Parcel</a>
+  <a href="shop.html">Punjabi Suits & Gifts</a>
+  <a href="dashboard.html">Admin Panel</a>
+</nav>
 
-  <section class="info">
-    <p><strong>Address:</strong> Mall Road, Kapurthala, Punjab, India</p>
-    <p><strong>Phone:</strong> <a href="tel:+917009624562">+91 7009624562</a></p>
-    <p><strong>Email:</strong> <a href="mailto:surjit@superfastcouriers.biz">surjit@superfastcouriers.biz</a></p>
-    <p><strong>Website:</strong> <a href="http://superfastcouriers.biz">superfastcouriers.biz</a></p>
-  </section>
+<section class="hero">
+  <h1>Welcome to Superfast Couriers</h1>
+  <p>Delivering happiness from Punjab to the World</p>
+</section>
 
-  <footer>
-    &copy; 2025 Superfast Couriers. All Rights Reserved.
-  </footer>
+<section class="tracking-links">
+  <h2>Track Your Shipment</h2>
+  <a href="https://www.dhl.com/in-en/home/tracking.html" target="_blank">Track DHL</a>
+  <a href="https://www.fedex.com/en-in/tracking.html" target="_blank">Track FedEx</a>
+  <a href="https://www.ups.com/track" target="_blank">Track UPS</a>
+  <a href="track.html">Track with Superfast</a>
+</section>
+
+<section class="map">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/1200px-World_map_-_low_resolution.svg.png" alt="World Map">
+</section>
+
+<section class="about">
+  <h2>About Us</h2>
+  <p>
+    Superfast Couriers is trusted by thousands for delivering premium products worldwide.  
+    From important parcels to cultural gifts, we bring Punjab closer to your loved ones abroad.
+    Fast courier services to USA, Canada, UK, Australia, UAE, and Europe.
+  </p>
+</section>
+
+<section class="upi-payment">
+  <h2>We Accept UPI Payments</h2>
+  <p>UPI ID: <strong>superfastcouriers@icici</strong></p>
+  <p>Scan & Pay easily and confirm payment on call: +91 70096 24562</p>
+</section>
+
+<footer>
+  <p>Phone: <a href="tel:+917009624562">+91 70096 24562</a> | 
+     Email: <a href="mailto:surjit@superfastcouriers.biz">surjit@superfastcouriers.biz</a><br>
+     Address: Mall Road, Kapurthala, Punjab, India
+  </p>
+  <p>&copy; 2025 Superfast Couriers. All Rights Reserved.</p>
+</footer>
+
 </body>
 </html>
