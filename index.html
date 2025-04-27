@@ -2,153 +2,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Superfast Couriers - Fast, Safe, Reliable</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Superfast Couriers</title>
   <style>
+    /* Basic reset and default styling */
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background: #f5f5f5;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #fff;
     }
+    /* Header styling */
     header {
-      background-color: #0073e6;
-      color: white;
-      padding: 20px 0;
-      text-align: center;
-    }
-    nav {
-      margin-top: 10px;
-    }
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .hero {
-      padding: 50px;
-      text-align: center;
-      background-color: white;
-    }
-    .hero h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
-      color: #0073e6;
-    }
-    .hero p {
-      font-size: 20px;
-      color: #555;
-    }
-    .buttons {
-      margin-top: 30px;
-    }
-    .buttons a {
-      background-color: #0073e6;
-      color: white;
-      padding: 15px 30px;
-      margin: 10px;
-      text-decoration: none;
-      border-radius: 5px;
-      display: inline-block;
-    }
-    footer {
-      text-align: center;
+      background: #333;
+      color: #fff;
       padding: 20px;
-      background-color: #222;
-      color: white;
-      margin-top: 30px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+    header p.tagline {
+      margin: 5px 0 0;
+      font-size: 1.2em;
+      color: #ccc;
+    }
+    /* Hero section styling */
+    .hero {
+      background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('hero.jpg') center/cover no-repeat;
+      /* If 'hero.jpg' is present in the same folder, it will be used as background. Otherwise, the solid color below is shown. */
+      background-color: #f5f5f5;
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .hero h2 {
+      font-size: 2em;
+      color: #800000; /* dark maroon color for emphasis */
+      margin: 0 0 10px;
+    }
+    .hero p.subtitle {
+      font-size: 1.25em;
+      color: #555;
+      margin: 0 0 20px;
+    }
+    .hero p.description {
+      font-size: 1em;
+      color: #333;
+      margin: 0;
+    }
+    /* Categories section styling */
+    .categories {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px 10px;
+      background: #fff;
+    }
+    .category {
+      flex: 1 1 250px;
+      max-width: 300px;
+      margin: 15px;
+      text-align: center;
+    }
+    .category img {
+      width: 100%;
+      max-width: 250px;
+      height: auto;
+      display: block;
+      margin: 0 auto 10px;
+      border-radius: 4px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .category h3 {
+      font-size: 1.1em;
+      color: #333;
+      margin: 5px 0;
+    }
+    .category p {
+      margin: 0;
+      font-size: 0.95em;
+      color: #666;
+    }
+    /* Info (contact details) section styling */
+    .info {
+      padding: 20px;
+      text-align: center;
+      background: #fafafa;
+    }
+    .info p {
+      margin: 8px 0;
+      font-size: 1em;
+      color: #333;
+    }
+    .info a {
+      color: #0073e6;
+      text-decoration: none;
+    }
+    .info a:hover {
+      text-decoration: underline;
+    }
+    /* Footer styling */
+    footer {
+      background: #000;
+      color: #fff;
+      text-align: center;
+      padding: 15px 10px;
+      font-size: 0.9em;
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>Superfast Couriers</h1>
+    <!-- Company tagline or short description -->
+    <p class="tagline">Fast, Reliable &amp; Affordable Deliveries</p>
+  </header>
 
-<header>
-  <h1>Superfast Couriers</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="track.html">Track Shipment</a>
-    <a href="shop.html">Shop</a>
-    <a href="admin.html">Admin Panel</a>
-  </nav>
-</header><button onclick="location.href='manage-awb.html'" style="margin-top: 10px; background-color: #0073e6; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
-  Manage AWB Numbers
-</button>
+  <section class="hero">
+    <h2>Premium Punjabi Suits &amp; Cultural Gifts</h2>
+    <p class="subtitle">Bringing the heritage of Punjab to your doorstep — Worldwide Shipping Available!</p>
+    <p class="description">Surprise your loved ones with a piece of Punjab, delivered with care through Superfast Couriers.</p>
+  </section>
 
-<section class="hero">
-  <h1>Fast. Safe. Reliable.</h1>
-  <p>Your trusted partner for courier and cargo services across India and beyond.</p>
-  <div class="buttons">
-    <a href="track.html">Track Your Parcel</a>
-    <a href="admin.html">Admin Login</a>
-  </div>
-</section>
-<section style="padding: 30px; background-color: #f5f5f5; text-align: center;">
-  <h2>Best International Courier Services - Fast and Secure</h2>
-  <p style="max-width: 800px; margin: auto; font-size: 18px; color: #555;">
-    At <strong>Superfast Couriers</strong>, we take pride in offering <strong>trusted international courier solutions</strong> connecting India to the world.
-    Whether it’s urgent documents, valuable parcels, or important commercial shipments, we ensure <strong>fast delivery, real-time tracking, customs clearance support, and secure handling</strong>.
-    <br><br>
-    Our partnerships with global leaders like <strong>DHL, FedEx, and UPS</strong> allow us to provide you <strong>the best rates and fastest transit times</strong> to over <strong>220 countries</strong>.
-    <br><br><section style="padding: 40px; background-color: #ffffff; text-align: center;">
-  <h2>We Deliver Across the Globe!</h2>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/1200px-World_map_-_low_resolution.svg.png" 
-       alt="World Map" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0,0,0,0.2); margin-top: 20px;">
-  <p style="font-size: 18px; color: #333; margin-top: 20px;">
-    We Deliver Worldwide with Speed and Trust!
-  </p>
-</section>
-    <strong>Choose Superfast Couriers for:</strong><br>
-    - Express Courier to USA, Canada, UK, UAE, Europe, Australia<br>
-    - Commercial shipments, samples, gifts, online orders<br>
-    - Affordable rates with customs support<br>
-    - Real-time AWB tracking
-    <br><br>
-    <strong>We Deliver Happiness Worldwide!</strong>
-  </<section style="padding: 40px; background-color: #e0f7fa; text-align: center;">
-  <h2>Contact Us</h2>
-  <p style="font-size: 18px; margin-top: 20px;">
-    <strong><h2 style="font-size: 32px; color: #800000;">Premium Punjabi Suits & Cultural Gifts</h2> Couriers</strong><br><br>
-    Phone: <a href="<p <section style="padding: 60px; background-color: #fffaf5; text-align: center;">
-  <h2 style="font-size: 32px; color: #800000;">Premium Punjabi Suits & Cultural Gifts</h2>
-  <p style="font-size: 20px; color: #555; margin-bottom: 40px;">
-    Bringing the heritage of Punjab to your doorstep — Worldwide Shipping Available!
-  </p>
-  
-  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
-    <div style="max-width: 300px;">
-      <img src="path-to-your-suit-image.jpg" alt="Premium Punjabi Suits" 
-           style="width: 100%; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-      <p style="margin-top: 10px; font-size: 18px; color: #333;">Designer Punjabi Suits</p>
+  <section class="categories">
+    <!-- Category 1 -->
+    <div class="category">
+      <img src="https://via.placeholder.com/250?text=Image" alt="Premium Punjabi Suits" />
+      <h3>Premium Punjabi Suits</h3>
+      <p>Designer Punjabi Suits</p>
     </div>
-    <div style="max-width: 300px;">
-      <img src="path-to-your-juttis-image.jpg" alt="Punjabi Juttis and Phulkaris" 
-           style="width: 100%; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-      <p style="margin-top: 10px; font-size: 18px; color: #333;">Traditional Juttis & Phulkaris</p>
+    <!-- Category 2 -->
+    <div class="category">
+      <img src="https://via.placeholder.com/250?text=Image" alt="Punjabi Juttis and Phulkaris" />
+      <h3>Punjabi Juttis &amp; Phulkaris</h3>
+      <p>Traditional Juttis &amp; Phulkaris</p>
     </div>
-    <div style="max-width: 300px;">
-      <img src="path-to-your-gift-image.jpg" alt="Punjabi Handicrafts" 
-           style="width: 100%; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-      <p style="margin-top: 10px; font-size: 18px; color: #333;">Handcrafted Punjabi Gifts</p>
+    <!-- Category 3 -->
+    <div class="category">
+      <img src="https://via.placeholder.com/250?text=Image" alt="Punjabi Handicrafts" />
+      <h3>Punjabi Handicrafts</h3>
+      <p>Handcrafted Punjabi Gifts</p>
     </div>
-  </div>
+  </section>
 
-  <p style="margin-top: 40px; font-size: 18px; color: #777;">
-    Surprise your loved ones with a piece of Punjab, delivered with care through Superfast Couriers.
-  </p>
-</section<section style="text-align: center; margin-top: 40px;">
-  <p style="font-size: 20px; color: #555;">
-    Bringing the heritage of Punjab to your doorstep — Worldwide Shipping Available!
-  </p>
-  <p style="font-size: 18px;">
-    <strong>Phone:</strong> <a href="tel:+917009624562" style="color: #0073e6; text-decoration: none;">+91 70096 24562</a><br>
-    <strong>Address:</strong> Mall Road, Kapurthala, Punjab, India<br>
-    <strong>Email:</strong> <a href="mailto:surjit@superfastcouriers.biz" style="color: #0073e6; text-decoration: none;">surjit@superfastcouriers.biz</a><br>
-    <strong>Website:</strong> <a href="https://superfastcouriers.biz" style="color: #0073e6; text-decoration: none;">superfastcouriers.biz</a>
-  </p>
-</section>
-</footer>
+  <section class="info">
+    <p><strong>Address:</strong> Mall Road, Kapurthala, Punjab, India</p>
+    <p><strong>Phone:</strong> <a href="tel:+917009624562">+91 7009624562</a></p>
+    <p><strong>Email:</strong> <a href="mailto:surjit@superfastcouriers.biz">surjit@superfastcouriers.biz</a></p>
+    <p><strong>Website:</strong> <a href="http://superfastcouriers.biz">superfastcouriers.biz</a></p>
+  </section>
 
+  <footer>
+    &copy; 2025 Superfast Couriers. All Rights Reserved.
+  </footer>
 </body>
 </html>
