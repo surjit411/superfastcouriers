@@ -2,138 +2,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage AWB Numbers - Superfast Couriers</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            margin: 0;
-            padding: 20px;
-            text-align: center;
-        }
-        h1 {
-            color: #0073e6;
-        }
-        .form-container {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            display: inline-block;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        input[type="text"] {
-            padding: 10px;
-            width: 250px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #0073e6;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 5px;
-        }
-        button:hover {
-            background-color: #005bb5;
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-            margin-top: 20px;
-        }
-        li {
-            background: white;
-            margin: 10px auto;
-            padding: 10px;
-            width: 300px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .delete-btn {
-            background-color: red;
-            border: none;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .delete-btn:hover {
-            background-color: darkred;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manage AWB Numbers - Superfast Couriers</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #0073e6;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 400px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #0073e6;
+      color: white;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #005bb5;
+    }
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      color: gray;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
 
-    <h1>Manage AWB Numbers</h1>
+<header>
+  <h1>Manage AWB Numbers</h1>
+</header>
 
-    <div class="form-container">
-        <input type="text" id="awbInput" placeholder="Enter AWB Number">
-        <br>
-        <button onclick="addAWB()">Save AWB</button>
-        <button onclick="printAWBs()">Print AWBs</button>
-    </div>
+<main>
+  <div class="card">
+    <label for="awbInput">Enter AWB Number:</label>
+    <input type="text" id="awbInput" placeholder="AWB123456789">
 
-    <ul id="awbList"></ul>
+    <button onclick="saveAWB()">Save AWB</button>
+    <button style="margin-top:10px; background-color:#28a745;" onclick="printAWB()">Print AWB</button>
+  </div>
+</main>
 
-    <script>
-        function loadAWBs() {
-            const awbs = JSON.parse(localStorage.getItem('awbs')) || [];
-            const list = document.getElementById('awbList');
-            list.innerHTML = '';
-            awbs.forEach((awb, index) => {
-                const li = document.createElement('li');
-                li.innerHTML = `${awb} <button class="delete-btn" onclick="deleteAWB(${index})">Delete</button>`;
-                list.appendChild(li);
-            });
-        }
+<footer>
+  &copy; 2025 Superfast Couriers. All Rights Reserved.
+</footer>
 
-        function addAWB() {
-            const awbInput = document.getElementById('awbInput');
-            const awb = awbInput.value.trim();
-            if (awb) {
-                const awbs = JSON.parse(localStorage.getItem('awbs')) || [];
-                awbs.push(awb);
-                localStorage.setItem('awbs', JSON.stringify(awbs));
-                awbInput.value = '';
-                loadAWBs();
-            } else {
-                alert('Please enter a valid AWB number.');
-            }
-        }
+<script>
+  function saveAWB() {
+    const awbNumber = document.getElementById('awbInput').value;
+    if (awbNumber.trim() === "") {
+      alert("Please enter a valid AWB number.");
+    } else {
+      alert("AWB Number " + awbNumber + " saved successfully!");
+      // Future: Save in database or server
+    }
+  }
 
-        function deleteAWB(index) {
-            const awbs = JSON.parse(localStorage.getItem('awbs')) || [];
-            awbs.splice(index, 1);
-            localStorage.setItem('awbs', JSON.stringify(awbs));
-            loadAWBs();
-        }
-
-        function printAWBs() {
-            const awbs = JSON.parse(localStorage.getItem('awbs')) || [];
-            let printWindow = window.open('', '', 'height=600,width=800');
-            printWindow.document.write('<html><head><title>AWB Numbers</title></head><body>');
-            printWindow.document.write('<h1>Superfast Couriers - AWB Numbers</h1><ul>');
-            awbs.forEach(awb => {
-                printWindow.document.write(`<li>${awb}</li>`);
-            });
-            printWindow.document.write('</ul><br><p>Jurisdiction: Kapurthala (Punjab)</p>');
-            printWindow.document.write('</body></html>');
-            printWindow.document.close();
-            printWindow.print();
-        }
-
-        window.onload = loadAWBs;
-    </script>
+  function printAWB() {
+    window.print();
+  }
+</script>
 
 </body>
 </html>
