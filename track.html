@@ -1,43 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Track Your Shipment - Superfast Couriers</title>
-  <style>
-    body { font-family: Arial; text-align: center; margin-top: 50px; }
-    input[type="text"], input[type="submit"] { padding: 10px; font-size: 16px; margin: 5px; }
-    #result { margin-top: 20px; font-size: 20px; color: #333; }
-  </style>
-</head>
-<body>
 
-<h1>Track Your Shipment</h1>
+.tracking button {
+  background-color: #0073e6;
+  color: white;
+  padding: 15px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 10px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
 
-<form id="trackForm">
-  <input type="text" id="awbInput" placeholder="Enter AWB Number">
-  <input type="submit" value="Track">
-</form>
-
-<div id="result"></div>
-
-<script>
-// Tracking database (editable later from Admin)
-const trackingDB = {
-  "1234567890": "In Transit",
-  "9876543210": "Delivered",
-  "5555555555": "Shipment received at Delhi Hub",
-};
-
-document.getElementById('trackForm').addEventListener('submit', function(event) {
-  event.preventDefault();
-  const awb = document.getElementById('awbInput').value.trim();
-  if (trackingDB[awb]) {
-    document.getElementById('result').innerHTML = "<strong>Status:</strong> " + trackingDB[awb];
-  } else {
-    document.getElementById('result').innerHTML = "<strong>Tracking ID not found.</strong>";
-  }
-});
-</script>
-
-</body>
-</html>
+.tracking button:hover {
+  background-color: #005bb5;
+  transform: translateY(-2px);
+}
