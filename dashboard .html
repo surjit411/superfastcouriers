@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Superfast Couriers</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #0073e6;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    main {
+      padding: 30px;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #0073e6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005bb5;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Superfast Couriers - Admin Panel</h1>
+</header>
+
+<main>
+  <div class="card">
+    <h2>Track Shipments</h2>
+    <p>View and manage customer AWB numbers.</p>
+    <button onclick="location.href='track.html'">Go to Tracking</button>
+  </div>
+
+  <div class="card">
+    <h2>Manage Website</h2>
+    <p>Edit homepage content, shop page, blog updates, etc.</p>
+    <button onclick="location.href='shop.html'">Go to Shop Management</button>
+  </div>
+
+  <div class="card">
+    <h2>Logout</h2>
+    <p>Securely log out from Admin Panel.</p>
+    <button onclick="logout()">Logout</button>
+  </div>
+</main>
+
+<script>
+  function logout() {
+    alert("Logged Out Successfully!");
+    window.location.href = "admin.html"; // Redirect back to login
+  }
+</script>
+
+</body>
+</html>
