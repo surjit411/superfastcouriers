@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SFC - Generate Invoice</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    header {
+      background-color: #0073e6;
+      color: white;
+      padding: 20px 0;
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+    .form-container {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    button {
+      padding: 12px 20px;
+      background-color: #0073e6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      margin: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005bb5;
+    }
+    .invoice {
+      background: white;
+      padding: 20px;
+      margin-top: 20px;
+      display: none;
+      text-align: left;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .terms {
+      font-size: 12px;
+      margin-top: 20px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+<header>SFC - Invoice Generator</header>
+
+<div class="form-container">
+  <input type="text" id="receiver" placeholder="Receiver Name" required>
+  <textarea id="address" placeholder="Receiver Address" required></textarea>
+  <input type="text" id="origin" placeholder="Origin City" required>
+  <input type="text" id="destination" placeholder="Destination City" required>
+  <input type="text" id="weight" placeholder="Shipment Weight (kg)" required>
+  <input type="text" id="charges" placeholder="Shipment Charges (₹)" required>
+  <button onclick="generateInvoice()">Generate Invoice</button>
+</div>
+
+<div id="invoiceSection" class="invoice">
+  <h1 style="text-align:center;">SFC</h1>
+  <h2>Shipment Invoice</h2>
+  <p><strong>Invoice Number:</strong> <span id="invNumber"></span></p>
+  <p><strong>Date:</strong> <span id="invDate"></span></p>
+  <hr>
+  <p><strong>Receiver Name:</strong> <span id="recName"></span></p>
+  <p><strong>Receiver Address:</strong> <span id="recAddress"></span></p>
+  <p><strong>Origin City:</strong> <span id="fromCity"></span></p>
+  <p><strong>Destination City:</strong> <span id="toCity"></span></p>
+  <p><strong>Shipment Weight:</strong> <span id="shipWeight"></span> kg</p>
+  <p><strong>Charges:</strong> ₹<span id="shipCharges"></span></p>
+
+  <div class="terms">
+    <h3>Terms & Conditions:</h3>
+    <ul>
+      <li>The company is not responsible for delays due to unforeseen circumstances.</li>
+      <li>Liability is limited to the declared shipment value.</li>
+      <li>All claims must be reported within 7 days.</li>
+      <li>Jurisdiction: Kapurthala (Punjab).</li>
+    </ul>
+  </div>
+
+  <br>
+  <div style="text-align: center;">
+    <button onclick="window.print()">Print Invoice</button>
+    <button onclick="downloadPDF()">Download PDF</button>
+  </div>
+</div>
+
+<script>
+function generateInvoice() {
+  const today = new Date();
+  const date = today.toISOString().split('T')[0];
+  const invoiceNumber = "INV-" + today.getFullYear() + ("0" + (today.getMonth()+1)).slice(-2) + ("0" + today.getDate()).slice(-2) + "-001";
+
+  document.getElementById('invNumber').innerText = invoiceNumber;
+  document.getElementById('invDate').innerText = date;
+  document.getElementById('recName').innerText = document.getElementById('receiver').value;
+  document.getElementById('recAddress').innerText = document.getElementById('address').value;
+  document.getElementById('fromCity').innerText = document.getElementById('origin').value;
+  document.getElementById('toCity').innerText = document.getElementById('destination').value;
+  document.getElementById('shipWeight').innerText = document.getElementById('weight').value;
+  document.getElementById('shipCharges').innerText = document.getElementById('charges').value;
+
+  document.getElementById('invoiceSection').style.display = 'block';
+}
+
+function downloadPDF() {
+  var element = document.getElementById('invoiceSection');
+  html2pdf().from(element).save('SFC-Invoice.pdf');
+}
+</script>
+
+</body>
+</html>
