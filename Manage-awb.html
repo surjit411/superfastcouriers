@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manage AWB - Superfast Couriers</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #0073e6;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    input, select, button {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #0073e6;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005bb5;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #ccc;
+      text-align: left;
+    }
+    th {
+      background-color: #0073e6;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Manage AWB Numbers</h1>
+
+<form id="awbForm">
+  <input type="text" id="awbNumber" placeholder="Enter AWB Number" required>
+  <select id="awbStatus">
+    <option value="Pending">Pending</option>
+    <option value="In Transit">In Transit</option>
+    <option value="Delivered">Delivered</option>
+    <option value="Cancelled">Cancelled</option>
+  </select>
+  <button type="submit">Add AWB</button>
+</form>
+
+<table id="awbTable">
+  <thead>
+    <tr>
+      <th>AWB Number</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Data will appear here -->
+  </tbody>
+</table>
+
+<script>
+const awbForm = document.getElementById('awbForm');
+const awbTableBody = document.querySelector('#awbTable tbody');
+
+// Load saved AWBs from local storage (temporary browser memory)
+document.addEventListener('DOMContentLoaded', () => {
+  const awbs = JSON.parse(localStorage.getItem('awbs')) || [];
+  awbs.forEach(awb => addRow(awb.number, awb.status));
+});
+
+awbForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const number = document.getElementById('awbNumber').value.trim();
+  const status = document.getElementById('awbStatus').value;
+  if(number) {
+    addRow(number, status);
+    saveAWB(number, status);
+    awbForm.reset();
+  }
+});
+
+function addRow(number, status) {
+  const row = document.createElement('tr');
+  row.innerHTML = `<td>${number}</td><td>${status}</td>`;
+  awbTableBody.appendChild(row);
+}
+
+function saveAWB(number, status) {
+  const awbs = JSON.parse(localStorage.getItem('awbs')) || [];
+  awbs.push({ number, status });
+  localStorage.setItem('awbs', JSON.stringify(awbs));
+}
+</script>
+
+</body>
+</html>
