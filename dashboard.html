@@ -3,47 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard - Superfast Couriers</title>
+  <title>Superfast Couriers - Admin Dashboard</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
       background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      text-align: center;
     }
-    h1 {
-      color: #0073e6;
+    header {
+      background-color: #0073e6;
+      color: white;
+      padding: 20px;
+      font-size: 24px;
     }
-    .buttons {
-      margin-top: 30px;
+    main {
+      margin-top: 40px;
     }
-    .buttons button {
+    a button {
       background-color: #0073e6;
       color: white;
       border: none;
       padding: 15px 30px;
       margin: 10px;
-      font-size: 16px;
-      border-radius: 5px;
+      font-size: 18px;
+      border-radius: 8px;
       cursor: pointer;
+      width: 250px;
     }
-    .buttons button:hover {
+    a button:hover {
       background-color: #005bb5;
+    }
+    footer {
+      margin-top: 50px;
+      color: #666;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
 
-  <h1>Welcome to Superfast Couriers Admin Dashboard</h1>
+  <header>
+    Welcome to Superfast Couriers Admin Dashboard
+  </header>
 
-  <div class="buttons"><button onclick="location.href='create-awb.html'" style="padding: 12px 20px; background-color: #0073e6; color: white; border: none; border-radius: 5px; font-size: 16px; margin-top: 10px; cursor: pointer;">
-  Create AWB / Invoice
-</button>
-    <button onclick="location.href='manage-awb.html'">Manage AWB Numbers</button>
-    <button onclick="location.href='create-invoice.html'">Create Invoice</button>
-    <button onclick="location.href='track.html'">Track Shipment Panel</button>
-    <button onclick="location.href='index.html'">Home</button>
-  </div>
-<button onclick="location.href='Create-AWB.html'" class="button">Create AWB / Invoice</button>
+  <main>
+    <a href="Create-AWB.html"><button>Create AWB / Invoice</button></a><br>
+    <a href="Manage-awb.html"><button>Manage AWB Numbers</button></a><br>
+    <a href="generate-invoice.html"><button>Create Invoice</button></a><br>
+    <a href="track.html"><button>Track Shipment Panel</button></a><br>
+    <a href="index.html"><button>Home</button></a>
+  </main>
+
+  <footer>
+    © 2025 Superfast Couriers. All Rights Reserved.
+  </footer>
+
 </body>
 </html>
