@@ -53,6 +53,19 @@
     <button type="submit">Save AWB</button>
   </form>
 </div>
+<input type="text" id="awbNumber" placeholder="AWB123456">
+<button onclick="saveAWB()">Save AWB</button>
 
+<script>
+  function saveAWB() {
+    const awb = document.getElementById('awbNumber').value;
+    database.ref('awb/' + awb).set({
+      status: "In Transit",
+      createdAt: new Date().toISOString()
+    }).then(() => {
+      alert("AWB Saved");
+    });
+  }
+</script>
 </body>
 </html>
