@@ -109,5 +109,21 @@
   }
 </script>
 
-</body>
+</<input type="text" id="trackAWB" placeholder="Enter AWB Number">
+<button onclick="trackAWB()">Track</button>
+
+<div id="awbStatus"></div>
+
+<script>
+  function trackAWB() {
+    const awb = document.getElementById('trackAWB').value;
+    database.ref('awb/' + awb).once('value').then(snapshot => {
+      if (snapshot.exists()) {
+        document.getElementById('awbStatus').innerText = "Status: " + snapshot.val().status;
+      } else {
+        document.getElementById('awbStatus').innerText = "AWB not found";
+      }
+    });
+  }
+</script>
 </html>
