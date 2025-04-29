@@ -1,7 +1,23 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+<head> // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyArL7ImrWE2vvAVikiEO2xqIDfec2P1E4Q",
+  authDomain: "superfastcouriers-4a14b.firebaseapp.com",
+  projectId: "superfastcouriers-4a14b",
+  storageBucket: "superfastcouriers-4a14b.firebasestorage.app",
+  messagingSenderId: "675490207122",
+  appId: "1:675490207122:web:22adc74bc3c982dc3b5d4b"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Superfast Couriers</title>
