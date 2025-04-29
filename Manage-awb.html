@@ -2,106 +2,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manage AWB Numbers - SFC</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage AWB Numbers - Superfast Couriers</title>
+  <!-- Include Bootstrap CSS for styling (optional, for consistency with site) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" 
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU9n05c8cIATZlgE/cYSAWIL3PeXJCRv2fgxZ" crossorigin="anonymous">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      margin: 0;
-      padding: 0;
+    /* Basic styling to match Superfast Couriers theme */
+    body { font-family: Arial, sans-serif; background-color: #f8f9fa; margin: 0; }
+    header { background-color: #0d6efd; color: #fff; padding: 1rem; text-align: center; }
+    header h1 { margin: 0; font-size: 2rem; }
+    header p { margin: 0; font-size: 1.1rem; }
+    nav { text-align: center; padding: 1rem; background-color: #f8f9fa; }
+    .btn-nav { background-color: #0d6efd; color: #fff; border: none; border-radius: 0.25rem; 
+              padding: 0.5rem 1rem; text-decoration: none; display: inline-block; margin: 0.3rem; }
+    .btn-nav:hover { background-color: #0b5ed7; }
+    .container { max-width: 600px; margin: 2rem auto; background: #fff; padding: 2rem; 
+                 border-radius: 0.5rem; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    .container h2 { margin-bottom: 1rem; }
+    .form-group { margin-bottom: 1.5rem; }
+    label { font-weight: 600; }
+    input[type=text], input[type=tel], input[type=number], select {
+      width: 100%; padding: 0.5rem; margin-top: 0.25rem;
+      border: 1px solid #ccc; border-radius: 0.25rem;
     }
-    header {
-      background-color: #0073e6;
-      color: white;
-      text-align: center;
-      padding: 20px;
+    button[type=submit] {
+      background-color: #0d6efd; color: #fff;
+      padding: 0.5rem 1.5rem; border: none; border-radius: 0.25rem;
+      font-size: 1rem; cursor: pointer;
     }
-    main {
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      width: 90%;
-      max-width: 400px;
-    }
-    input[type="text"] {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    .button-group {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 15px;
-    }
-    button {
-      background-color: #0073e6;
-      color: white;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    button:hover {
-      background-color: #005bb5;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #f5f5f5;
-      font-size: 14px;
-      color: #555;
-    }
+    button[type=submit]:hover { background-color: #0b5ed7; }
+    #message { margin-top: 1rem; font-weight: 600; }
+    #message.success { color: green; }
+    #message.error { color: red; }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Manage AWB Numbers</h1>
-</header>
+  <!-- Header with brand name and tagline -->
+  <header>
+    <h1>Superfast Couriers</h1>
+    <p>Fast, Reliable & Affordable Deliveries</p>
+  </header>
 
-<main>
-  <div class="card">
-    <label for="awbInput">Enter AWB Number:</label>
-    <input type="text" id="awbInput" placeholder="AWB123456789">
-    <div class="button-group">
-      <button onclick="saveAWB()">Save AWB</button>
-      <button onclick="printAWB()">Print AWB</button>
-    </div>
+  <!-- Navigation menu (consistent with site) -->
+  <nav>
+    <a href="manage-awb.html" class="btn-nav">Manage AWB Numbers</a>
+    <a href="index.html" class="btn-nav">Home</a>
+    <a href="track-parcel.html" class="btn-nav">Track Parcel</a>
+    <a href="punjabi-suits.html" class="btn-nav">Punjabi Suits &amp; Gifts</a>
+    <a href="admin-panel.html" class="btn-nav">Admin Panel</a>
+  </nav>
+
+  <!-- Main content: AWB form -->
+  <div class="container">
+    <h2>Manage AWB Numbers</h2>
+    <p>Please enter the shipment details below:</p>
+    <form id="awbForm">
+      <div class="form-group">
+        <label for="awbNumber">AWB Number:</label>
+        <input type="text" id="awbNumber" name="awbNumber" required placeholder="Enter AWB Number">
+      </div>
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" required placeholder="Enter recipient's phone">
+      </div>
+      <div class="form-group">
+        <label for="invoiceNumber">Invoice Number:</label>
+        <input type="text" id="invoiceNumber" name="invoiceNumber" required placeholder="Enter invoice number">
+      </div>
+      <div class="form-group">
+        <label for="status">Status:</label>
+        <input type="text" id="status" name="status" required placeholder="Enter current status (e.g. In Transit)">
+      </div>
+      <button type="submit">Save AWB</button>
+      <!-- Success/Error message area -->
+      <div id="message"></div>
+    </form>
   </div>
-</main>
 
-<footer>
-  &copy; 2025 Superfast Couriers (SFC). All Rights Reserved.<br>
-  Kapurthala Jurisdiction
-</footer>
+  <!-- Firebase SDK and form handling logic -->
+  <script type="module">
+    // Import Firebase app and database SDK from CDN
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
 
-<script>
-  function saveAWB() {
-    const awbNumber = document.getElementById('awbInput').value;
-    if (awbNumber.trim() === "") {
-      alert("Please enter a valid AWB number.");
-    } else {
-      alert("AWB Number " + awbNumber + " saved successfully!");
-      // Future: Save to server/database
-    }
-  }
+    // Firebase configuration for Superfast Couriers project
+    const firebaseConfig = {
+      apiKey: "AIzaSyA-xxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      authDomain: "superfastcouriers-4a14b.firebaseapp.com",
+      databaseURL: "https://superfastcouriers-4a14b-default-rtdb.firebaseio.com",
+      projectId: "superfastcouriers-4a14b",
+      storageBucket: "superfastcouriers-4a14b.appspot.com",
+      messagingSenderId: "675490207122",
+      appId: "1:675490207122:web:22adc74bc3c982dc3b5d4b"
+    };
 
-  function printAWB() {
-    window.print();
-  }
-</script>
+    // Initialize Firebase app and database
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+
+    // Form submission handler
+    const form = document.getElementById('awbForm');
+    const messageDiv = document.getElementById('message');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();  // Prevent default form POST
+
+      // Get form values
+      const awbNumber = document.getElementById('awbNumber').value.trim();
+      const phoneNumber = document.getElementById('phoneNumber').value.trim();
+      const invoiceNumber = document.getElementById('invoiceNumber').value.trim();
+      const status = document.getElementById('status').value.trim();
+
+      if (awbNumber === "") {
+        // If AWB is empty (shouldn't happen due to required, but just in case)
+        messageDiv.textContent = "Please enter the AWB number.";
+        messageDiv.className = "error";
+        return;
+      }
+
+      // Create a reference in the database (awbs/<AWBNumber>)
+      const awbRef = ref(database, 'awbs/' + awbNumber);
+
+      // Save the data to Realtime Database
+      set(awbRef, {
+        phone: phoneNumber,
+        invoice: invoiceNumber,
+        status: status
+      }).then(() => {
+        // Success: show message and reset form
+        messageDiv.textContent = "AWB details saved successfully!";
+        messageDiv.className = "success";
+        form.reset();
+      }).catch((error) => {
+        // Error: show message
+        console.error("Error saving AWB details:", error);
+        messageDiv.textContent = "Error: " + error.message;
+        messageDiv.className = "error";
+      });
+    });
+  </script>
 
 </body>
 </html>
