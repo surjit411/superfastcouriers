@@ -1,156 +1,178 @@
 
 <!DOCTYPE html>
-<html lang="en"> 
-<//import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyArL7ImrWE2vvAVikiEO2xqIDfec2P1E4Q",
-  authDomain: "superfastcouriers-4a14b.firebaseapp.com",
-<head> // Import the functions you need from the SDKs you need
-  projectId: "superfastcouriers-4a14b",
-  storageBucket: "superfastcouriers-4a14b.firebasestorage.app",
-  messagingSenderId: "675490207122",
-  appId: "1:675490207122:web:22adc74bc3c982dc3b5d4b"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Superfast Couriers</title>
-
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Superfast Couriers – Fast, Reliable & Affordable Deliveries</title>
   <style>
+    /* Base Styles */
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       color: #333;
       line-height: 1.6;
     }
+    h1, h2, h3, p {
+      margin: 0.5em 0;
+    }
 
+    /* Header Styles */
     header {
-      background-color: #0073e6;
-      color: white;
+      background: #0073e6;       /* Brand blue background */
+      color: #fff;
+      text-align: center;
       padding: 20px 10px;
-      text-align: center;
+    }
+    header h1 {
+      font-size: 2em;
+      margin: 0.2em 0;
+    }
+    header p {
+      font-size: 1.2em;
+      margin: 0.2em 0;
     }
 
+    /* Navigation Styles */
     nav {
-      background: #f1f1f1;
-      padding: 15px;
-      text-align: center;
+      display: flex;
+      flex-wrap: wrap;           /* Allow buttons to wrap on small screens */
+      justify-content: center;
+      padding: 10px;
+      background: #f9f9f9;
     }
-
-    nav a button {
-      background: linear-gradient(to right, #0073e6, #005bb5);
-      color: white;
+    .nav-button {
+      display: inline-block;
+      background: linear-gradient(to right, #0073e6, #0073e6);  /* Blue button (solid color via gradient) */
+      color: #fff;
+      text-decoration: none;
       padding: 15px 25px;
       font-size: 18px;
       border: none;
       border-radius: 6px;
-      cursor: pointer;
       margin: 10px;
-      box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
-      transition: background-color 0.3s ease, transform 0.2s ease;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease, transform 0.3s ease;
     }
-
-    nav a button:hover {
-      background: linear-gradient(to right, #0056b3, #004494);
+    .nav-button:hover {
+      background: linear-gradient(to right, #0056b3, #0056b3);  /* Darker blue on hover */
       transform: translateY(-2px);
     }
 
+    /* Main Content Sections */
+    section {
+      max-width: 800px;   /* Limit width for readability on large screens */
+      margin: 20px auto;
+      padding: 0 15px;
+    }
     section.hero {
-      padding: 40px 20px;
-      text-align: center;
-      background-color: #ffffff;
+      text-align: center; /* Center text in hero section */
     }
 
-    section.hero img {
-      margin-top: 30px;
-      width: 80%;
-      max-width: 450px;
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
+    /* Footer Styles */
     footer {
-      background-color: #333;
-      color: white;
+      background: #0073e6;
+      color: #fff;
       text-align: center;
-      padding: 20px 10px;
-      font-size: 14px;
+      padding: 15px 10px;
+    }
+    footer a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    footer p {
+      margin: 5px 0;
     }
 
-    footer a {
-      color: #80c7ff;
-      text-decoration: none;
+    /* Responsive Adjustments */
+    @media (max-width: 600px) {
+      .nav-button {
+        display: block;
+        width: 80%;
+        margin: 10px auto;
+        font-size: 16px;
+      }
+      header h1 {
+        font-size: 1.6em;
+      }
+      header p {
+        font-size: 1.1em;
+      }
     }
   </style>
-</head><script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+</head>
+<body>
 
-<<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
-<header>
-  <h1>Superfast Couriers</h1>
-  <p>Fast, Reliable & Affordable Deliveries</p>
-</header>
+  <!-- Header with site title and tagline -->
+  <header>
+    <h1>Superfast Couriers</h1>
+    <p>Fast, Reliable &amp; Affordable Deliveries</p>
+  </header>
 
-<nav>
-  <a href="manage-awb.html"><button>Manage AWB Numbers</button></a>
-  <a href="index.html"><button>Home</button></a>
-  <a href="track.html"><button>Track Parcel</button></a>
-  <a href="shop.html"><button>Punjabi Suits & Gifts</button></a>
-  <a href="dashboard.html"><button>Admin Panel</button></a>
-</nav>
+  <!-- Navigation menu -->
+  <nav>
+    <a href="manage-awb.html" class="nav-button">Manage AWB</a>
+    <a href="track.html" class="nav-button">Track Parcel</a>
+    <a href="shop.html" class="nav-button">Shop</a>
+    <a href="dashboard.html" class="nav-button">Admin Panel</a>
+  </nav>
 
- <section class="hero">
-  <h1>Welcome to Superfast Couriers</h1>
-  <p>Delivering happiness from Punjab to the World with care and speed!</p>
+  <!-- Hero section with welcome message -->
+  <section class="hero">
+    <h2>Welcome to Superfast Couriers</h2>
+    <p><em>Delivering happiness from Punjab to the world with care and speed!</em></p>
+  </section>
 
-  
-      <section class="blog">
-  <h2>Reliable Courier Services from Punjab to the World</h2>
-  <p>In today's fast-paced world, courier services have become an essential part of everyday life. People want their valuable goods, important documents, and gifts to be delivered quickly and securely.</p>
-  <p>At Superfast Couriers, we provide reliable courier solutions from Punjab to anywhere around the globe.</p>
-  <p>Partnered with world-renowned companies like DHL, FedEx, and UPS, we ensure your parcels are delivered with speed and care.</p>
-  <p>Our mission is to connect you with your loved ones and businesses across continents, with trust and responsibility.</p>
-  <p>Trust Superfast Couriers — delivering happiness around the world!</p>
-</section>
-  
+  <!-- Introduction section with details about services -->
+  <section class="intro">
+    <h3>Reliable Courier Services from Punjab to the World</h3>
+    <p>In today’s fast-paced world, courier services have become an essential part of everyday life. People want their valuable goods, important documents, and gifts to be delivered quickly and securely.</p>
+    <p>At Superfast Couriers, we provide dependable delivery solutions from Punjab to anywhere around the globe.</p>
+    <p>Partnered with world-renowned companies like DHL, FedEx, and UPS, we ensure your parcels are delivered with speed and care.</p>
+    <p>Our mission is to connect you with your loved ones and businesses across continents, with trust and responsibility.</p>
+    <p><strong>Trust Superfast Couriers</strong> — delivering happiness around the world!</p>
+  </section>
 
-      
-</section>
+  <!-- Footer with contact information -->
+  <footer>
+    <p>Phone: +91 7009624562</p>
+    <p>Address: Mall Road, Kapurthala, Punjab, India</p>
+    <p>Email: <a href="mailto:surjit@superfastcouriers.biz">surjit@superfastcouriers.biz</a></p>
+    <p>© 2025 Superfast Couriers. All Rights Reserved.</p>
+  </footer>
 
-<footer>
-  <p>Phone: +91 7009624562</p>
-  <p>Address: Mall Road, Kapurthala, Punjab, India</p>
-  <p>Email: <a href="mailto:surjit@superfastcouriers.biz">surjit@superfastcouriers.biz</a></p>
-  <p>Website: <a href="https://superfastcouriers.biz" target="_blank">superfastcouriers.biz</a></p>
-  <p>&copy; 2025 Superfast Couriers. All Rights Reserved.</p>
-</footer><!-- Firebase App (the core Firebase SDK) -->
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+  <!-- Firebase SDK integration and initialization -->
+  <script type="module">
+    // Import the Firebase SDK functions we need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+    /* import additional Firebase services as needed, for example:
+       import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-analytics.js";
+       import { getFirestore } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
+       import { getAuth } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
+       (These can be added later if required by the app)
+    */
 
-<script>
-  // Your Firebase Config Here
-  const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "superfastcouriers-xxxx.firebaseapp.com",
-    projectId: "superfastcouriers-xxxx",
-    storageBucket: "superfastcouriers-xxxx.appspot.com",
-    messagingSenderId: "xxxx",
-    appId: "xxxx"
-  };
+    // Your web app's Firebase configuration (replace with your actual config values)
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY_HERE",  // e.g., "AIzaSyXXXXXX-XXXXXXXXXXXXXX"
+      authDomain: "superfastcouriers-4a14b.firebaseapp.com",
+      databaseURL: "https://superfastcouriers-4a14b-default-rtdb.firebaseio.com",
+      projectId: "superfastcouriers-4a14b",
+      storageBucket: "superfastcouriers-4a14b.appspot.com",
+      messagingSenderId: "675490207122",
+      appId: "1:675490207122:web:22adc74bc3c982dc3b5d4b"
+    };
 
-  // Initialize Firebase
-  const app = firebase.initializeApp(firebaseConfig);
-  const database = firebase.database();
-</script>
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    // (Optional) Initialize other Firebase services here, e.g.:
+    // const analytics = getAnalytics(app);
+  </script>
 
 </body>
 </html>
