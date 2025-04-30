@@ -109,6 +109,47 @@
         errorDiv.textContent = "Error: " + error.message;
       });
     });
-  </script>
+  </script><div class="progress mt-4" style="height: 25px;">
+  <div id="progressStep" class="progress-bar progress-bar-striped bg-success" role="progressbar"
+       style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+    In Transit
+  </div>
+</div>
+
+<script>
+  function updateProgressBar(status) {
+    const bar = document.getElementById("progressStep");
+    let width = 0;
+    let label = "In Transit";
+
+    switch (status.toLowerCase()) {
+      case "in transit":
+        width = 25;
+        label = "In Transit";
+        break;
+      case "at hub":
+        width = 50;
+        label = "At Hub";
+        break;
+      case "at destination":
+        width = 75;
+        label = "At Destination";
+        break;
+      case "out for delivery":
+        width = 100;
+        label = "Out for Delivery";
+        break;
+      default:
+        width = 10;
+        label = status;
+    }
+
+    bar.style.width = width + "%";
+    bar.setAttribute("aria-valuenow", width);
+    bar.textContent = label;
+  }
+
+  // Example usage: updateProgressBar("at hub");
+</script>
 </body>
 </html>
