@@ -1,12 +1,88 @@
 
-<div class="card">
-  <img src="https://cdn.pixabay.com/photo/2016/11/29/03/53/adidas-1867126_1280.jpg" alt="Shoes">
-  <h3>Shoes</h3>
-  <p>New shoe pairs delivered quickly & safely.</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Services - Superfast Couriers</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #004080;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      width: 180px;
+      padding: 15px;
+      border-radius: 6px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .card img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    footer {
+      background-color: #004080;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
 
-<div class="card">
-  <img src="https://cdn.pixabay.com/photo/2020/03/09/19/05/household-4914900_1280.jpg" alt="Household">
-  <h3>Household Items</h3>
-  <p>From utensils to gadgets, we deliver all.</p>
-</div>
+<header>
+  <h1>What We Deliver</h1>
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="services.html">Services</a> |
+    <a href="manage-awb.html">Admin</a>
+  </nav>
+</header>
+
+<section class="grid">
+
+  <div class="card">
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...Clothes_Base64_Continued..." alt="Clothes">
+    <h3>Clothes</h3>
+    <p>Timely delivery of garments, suits, and more.</p>
+  </div>
+
+  <div class="card">
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...Medicines_Base64_Continued..." alt="Medicines">
+    <h3>Medicines</h3>
+    <p>Safe & fast delivery of essential medicines.</p>
+  </div>
+
+  <!-- More cards will go here -->
+
+</section>
+
+<footer>
+  <p>&copy; 2025 Superfast Couriers</p>
+</footer>
+
+</body>
+</html>
