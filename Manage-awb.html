@@ -1,95 +1,37 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Manage AWB Numbers - Superfast Couriers</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" />
-  <style>
-    body { font-family: Arial, sans-serif; background-color: #f8f9fa; margin: 0; }
-    header { background-color: #0d6efd; color: #fff; padding: 1rem; text-align: center; }
-    .container { max-width: 600px; margin: 2rem auto; background: #fff; padding: 2rem; border-radius: 0.5rem; }
-    button:hover { background-color: #0056b3; }
-    .message { margin-top: 1rem; }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Manage AWB Numbers</h1>
-  </header>
+const sheetName = 'Sheet1';
+const scriptProp = PropertiesService.getScriptProperties();
 
-  <div class="container">
-    <form id="awbForm">
-      <div class="mb-3">
-        <label for="awbNumber" class="form-label">Enter AWB Number</label>
-        <input type="text" id="awbNumber" class="form-control" required />
-      </div>
-      <button type="submit" class="btn btn-primary">Save AWB</button>
-      <div id="message" class="message text-success"></div>
-    </form>
+function initialSetup() {
+  const activeSpreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  scriptProp.setProperty('key', activeSpreadsheet.getId());
+}
 
-    <hr />
+function doPost(e) {
+  const lock = LockService.getScriptLock();
+  lock.tryLock(10000);
 
-    <h4>Track AWB</h4>
-    <div class="mb-3">
-      <input type="text" id="trackInput" class="form-control" placeholder="Enter AWB to track" />
-      <button class="btn btn-success mt-2" onclick="trackAWB()">Track</button>
-    </div>
-    <div id="trackResult" class="message text-info"></div>
-  </div>
+  try {
+    const doc = SpreadsheetApp.openById(scriptProp.getProperty('key'));
+    const sheet = doc.getSheetByName(sheetName);
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-    import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
+    const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+    const nextRow = sheet.getLastRow() + 1;
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyBAMd2GT9GtHEZ-Sf_RuUkUaNghq14bEw",
-      authDomain: "superfastpanel-da000.firebaseapp.com",
-      databaseURL: "https://superfastpanel-da000-default-rtdb.firebaseio.com",
-      projectId: "superfastpanel-da000",
-      storageBucket: "superfastpanel-da000.appspot.com",
-      messagingSenderId: "405590662257",
-      appId: "1:405590662257:web:69809813dce14b09e8cfd0"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-
-    const form = document.getElementById('awbForm');
-    const messageDiv = document.getElementById('message');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const awbNumber = document.getElementById('awbNumber').value.trim();
-      if (!awbNumber) return;
-
-      const refPath = ref(db, 'awbs/' + awbNumber);
-      await set(refPath, {
-        status: "In Transit",
-        updated: new Date().toISOString()
-      });
-      messageDiv.textContent = 'AWB Saved!';
-      form.reset();
+    const newRow = headers.map(function(header) {
+      return header === 'Updated' ? new Date().toISOString() : e.parameter[header];
     });
 
-    window.trackAWB = async () => {
-      const awb = document.getElementById('trackInput').value.trim();
-      const resultDiv = document.getElementById('trackResult');
+    sheet.getRange(nextRow, 1, 1, newRow.length).setValues([newRow]);
 
-      if (!awb) {
-        resultDiv.textContent = "Please enter a valid AWB number.";
-        return;
-      }
-
-      const snapshot = await get(ref(db, 'awbs/' + awb));
-      if (snapshot.exists()) {
-        const data = snapshot.val();
-        resultDiv.innerHTML = `<strong>Status:</strong> ${data.status}<br><small>Last Updated: ${data.updated}</small>`;
-      } else {
-        resultDiv.textContent = "AWB not found.";
-      }
-    };
-  </script>
-</body>
-</html>
+    return ContentService
+      .createTextOutput(JSON.stringify({ 'result': 'success', 'row': nextRow }))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch (e) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ 'result': 'error', 'error': e }))
+      .setMimeType(ContentService.MimeType.JSON);
+  } finally {
+    lock.releaseLock();
+  }
+}
